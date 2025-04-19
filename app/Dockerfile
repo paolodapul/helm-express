@@ -1,9 +1,10 @@
-FROM node:20-alpine
+FROM oven/bun:latest
 
 WORKDIR /app
-COPY package*.json ./
-RUN npm install
+COPY package.json ./
+COPY bun.lock* ./
+RUN bun install
 COPY . .
 
-CMD ["node", "app.js"]
+CMD ["bun", "app.ts"]
 
